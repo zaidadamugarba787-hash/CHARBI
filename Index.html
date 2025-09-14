@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.A. Dahiru charbi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .tasbaha-container {
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .counter {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #4a90e2;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+        }
+
+        .button:active {
+            box-shadow: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
+            transform: scale(0.98);
+        }
+
+        .main-button {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        .reset-button {
+            background-color: #ffffff;
+            color: #4a90e2;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="tasbaha-container">
+        <!-- Title of the tasbaha -->
+        <h1 class="title">K.A. Dahiru charbi</h1>
+        
+        <!-- Counter display -->
+        <div id="counter" class="counter">0</div>
+        
+        <!-- Buttons for interaction -->
+        <div class="button-group">
+            <button id="increment-btn" class="button main-button">Increment</button>
+            <button id="reset-btn" class="button reset-button">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Get the necessary HTML elements
+        const counterElement = document.getElementById('counter');
+        const incrementButton = document.getElementById('increment-btn');
+        const resetButton = document.getElementById('reset-btn');
+
+        // Initialize the count from localStorage, or start at 0 if no value is found
+        let count = parseInt(localStorage.getItem('tasbahaCount')) || 0;
+        counterElement.textContent = count;
+
+        // Function to update the counter and save to localStorage
+        function updateCounter() {
+            counterElement.textContent = count;
+            localStorage.setItem('tasbahaCount', count);
+        }
+
+        // Add event listener for the increment button
+        incrementButton.addEventListener('click', () => {
+            count++;
+            updateCounter();
+        });
+
+        // Add event listener for the reset button
+        resetButton.addEventListener('click', () => {
+            count = 0;
+            updateCounter();
+        });
+
+    </script>
+
+</body>
+</html>
